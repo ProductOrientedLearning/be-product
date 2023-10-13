@@ -1,0 +1,10 @@
+server:
+  port: 8081
+  shutdown: graceful
+  servlet:
+    context-path: /eshop-product
+spring:
+  application:
+    name: service-product
+  profiles:
+    active: dev
