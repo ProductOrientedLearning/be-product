@@ -39,7 +39,7 @@ public class AdminProductController {
     @Autowired
     private ProductService productService;
 
-    @PostMapping
+    @PostMapping()
     public ResponseEntity<ProductDto> createProduct(@RequestBody ProductRequest request) {
         return new ResponseEntity<>(productService.createProduct(request), HttpStatus.CREATED);
     }

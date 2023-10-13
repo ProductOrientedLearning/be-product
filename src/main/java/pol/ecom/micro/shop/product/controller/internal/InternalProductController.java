@@ -39,7 +39,7 @@ public class InternalProductController {
     private ProductService productService;
 
     @GetMapping("/id/{id}")
-    public ResponseEntity<ProductDto> createProduct(@PathVariable(value = "id") long id) {
+    public ResponseEntity<ProductDto> getProduct(@PathVariable(value = "id") long id) {
         return new ResponseEntity<>(productService.findById(id), HttpStatus.OK);
     }
 }

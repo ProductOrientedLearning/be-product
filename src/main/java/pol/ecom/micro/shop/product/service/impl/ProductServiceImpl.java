@@ -37,6 +37,8 @@ import pol.ecom.micro.shop.product.mapper.entity.ProductMapper;
 import pol.ecom.micro.shop.product.repository.ProductRepository;
 import pol.ecom.micro.shop.product.service.ProductService;
 
+import java.util.Optional;
+
 @Service
 public class ProductServiceImpl implements ProductService {
     @Autowired
@@ -58,9 +60,14 @@ public class ProductServiceImpl implements ProductService {
         return productDtoMapper.toDto(productRepository.save(productMapper.toEntity(request)));
     }
 
+    @Transactional(readOnly = true)
     @Override
     public ProductDto findById(long id) {
-        return null;
+        Optional<Product> product = productRepository.findById(id);
+        if(product.isEmpty()) {
+            throw new ShopException(MessageCode.MESSAGE_PRODUCT_NOT_FOUND.getCode(), messageUtil.getMessage(MessageCode.MESSAGE_PRODUCT_NOT_FOUND));
+        }
+        return productDtoMapper.toDto(product.get());
     }
 
     @Transactional(readOnly = true)

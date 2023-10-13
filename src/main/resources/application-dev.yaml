@@ -22,4 +22,4 @@ spring:
 header:
   security:
     key-token: x-access-token
-    value-token: ackoilkadjfoaj;ad12
+    value-token: ackoilkadjfoajad12
