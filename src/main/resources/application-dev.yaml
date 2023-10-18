@@ -18,6 +18,9 @@ spring:
       pool-name: ProductEshopPolHikari
 
 
+url:
+  product-service: ${PRODUCT_SERVICE_URL:http://localhost:8081}/eshop-product
+
 
 header:
   security:
