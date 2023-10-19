@@ -40,6 +40,6 @@ public class InternalProductController {
 
     @GetMapping("/id/{id}")
     public ResponseEntity<ProductDto> getProduct(@PathVariable(value = "id") long id) {
-        return new ResponseEntity<>(productService.findById(id), HttpStatus.OK);
+        return new ResponseEntity<>(productService.findById(id, true), HttpStatus.OK);
     }
 }

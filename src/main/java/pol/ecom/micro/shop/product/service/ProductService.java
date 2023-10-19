@@ -28,7 +28,7 @@ import pol.ecom.micro.shop.product.dto.request.ProductRequest;
 public interface ProductService {
 
     ProductDto createProduct(ProductRequest request);
-    ProductDto findById(long id);
+    ProductDto findById(long id, boolean internal);
     ProductDto findBySku(String sku);
 
 }

@@ -62,13 +62,18 @@ public class ProductServiceImpl implements ProductService {
 
     @Transactional(readOnly = true)
     @Override
-    public ProductDto findById(long id) {
+    public ProductDto findById(long id, boolean internal) {
         Optional<Product> product = productRepository.findById(id);
         if(product.isEmpty()) {
-            throw new ShopException(MessageCode.MESSAGE_PRODUCT_NOT_FOUND.getCode(), messageUtil.getMessage(MessageCode.MESSAGE_PRODUCT_NOT_FOUND));
+            if(internal) {
+                return null;
+            } else {
+                throw new ShopException(MessageCode.MESSAGE_PRODUCT_NOT_FOUND.getCode(), messageUtil.getMessage(MessageCode.MESSAGE_PRODUCT_NOT_FOUND));
+            }
         }
         return productDtoMapper.toDto(product.get());
     }
+
 
     @Transactional(readOnly = true)
     @Override
